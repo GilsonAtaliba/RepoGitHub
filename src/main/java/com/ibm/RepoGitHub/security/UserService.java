@@ -18,35 +18,34 @@ public class UserService implements UserDetailsService{
 		User user = new User();
 		
 		
-		if(userName.equals("teste")) {
+		if(userName.equals("admin")) {
 			user.setId(0L);
-			user.setName("teste");
+			user.setName("admin");
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12); // Strength set as 12
-			String encodedPassword = encoder.encode("1234");
+			String encodedPassword = encoder.encode("12345");
 			user.setPassword(encodedPassword);
-			user.setUserName("teste");
+			user.setUserName("admin");
 		}
 		
 		Optional<User>	possibleUser = Optional.of(user);
 		
-		return possibleUser.orElseThrow(() -> new	UsernameNotFoundException("Não	foi	possível encontrar o usuário: "	+ userName));
+		return possibleUser.orElseThrow(() -> new UsernameNotFoundException("Não	foi	possível encontrar o usuário: "	+ userName));
 	}
 	
 	public UserDetails loadUserById(Long userId) {
 		User user = new User();	
 		if(userId.equals(0L)){
 			user.setId(0L);
-			user.setName("teste");
+			user.setName("admin");
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12); // Strength set as 12
-			String encodedPassword = encoder.encode("1234");
+			String encodedPassword = encoder.encode("12345");
 			user.setPassword(encodedPassword);
-			user.setUserName("teste");
+			user.setUserName("admin");
 		}
 		
 		Optional<User>	possibleUser = Optional.of(user);
 		return	possibleUser.orElseThrow(
-						()	->	new	UsernameNotFoundException("Não	foi	possível	encontrar	o	usuário	com	id:	"	+
-								userId));
+						 ()	->	new	UsernameNotFoundException("Não	foi	possível	encontrar	o	usuário	com	id:	" + userId));
 }
 			
 				
